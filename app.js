@@ -1,4 +1,4 @@
-/*ensure all thml file is loaded before loading in javascript */
+//ensure all thml file is loaded before loading in javascript 
 document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid') // . means class name
     let width = 10
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (i < 98 && !isRightEdge && squares[i + 1].classList.contains('bomb')) total++
 
                 //checks bottom-left square for bomb, if found increase total by one
-                if (i < 90 && !isLeftEdge && square[i - 1 + width].classList.contains('bomb')) totall++
+                if (i < 90 && !isLeftEdge && squares[i - 1 + width].classList.contains('bomb')) total++
 
                 //check below-right square for bomb, if found increase total by one
                 if (i < 88 && !isRightEdge && squares[i + 1 + width].classList.contains('bomb')) total++
@@ -61,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //check below square for bomb
                 if (i < 89 && squares[i + width].classList.contains('bomb')) total++
 
+                //gives the total amount of bombs adjacent to the square at index i
                 squares[i].setAttribute('data', total)
             }
         }
@@ -72,8 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function click(square) {
         if (square.classList.contains('bomb')) {
             alert('Game Over')
+        } else {
+            let total = square.getAttribute('data')
+            if (total != 0) {
+                square.classList.add('checked')
+                square.innerHTML = total
+                return
+            }
+            square.classList.add('checked')
         }
-
 
     }
 
