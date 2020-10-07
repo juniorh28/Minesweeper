@@ -3,8 +3,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid') // . means class name
     let width = 10
     let bombAmount = 20
+    let flag = 0;
     let squares = []
     let isGameOver = false
+    const choice = document.createElement('div')
+    choice.addEventListener('difficulty', function (e) {
+        difficulty(choice)
+    })
 
     //Create the broad
     function createBoard() {
@@ -29,9 +34,19 @@ document.addEventListener('DOMContentLoaded', () => {
             square.addEventListener('click', function (e) {
                 click(square)
             })
+
+            //ctrl and left click
+            square.oncontextmenu = function (e) {
+                e.preventDefault()
+                addFlag(square)
+            }
+
+
+
+
         }
 
-        //add numbers
+        //add numbers of bomb adjacent to the square
         for (let i = 0; i < squares.length; i++) {
             let total = 0
             const isLeftEdge = (i % width === 0) //if the i / width has no remainder, it must be divisible by 10 and on the left edge
@@ -70,6 +85,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     createBoard()
 
+    //add flag with right click
+    function addFlag(square) {
+        if (isGameOver) return
+        if (!square.classList.contains('checked') && (flags < bombAmount)) {
+            if (!square.classList.contains('flag')) {
+                square.classList.add('flag')
+                square.innerHTML('🚩')
+                flag++
+            } else {
+                square.classList.remove('flag')
+                square.innerHTML('')
+                flag--
+            }
+        }
+    }
+
+
+
+
+
+
+
     //click on square actions
     function click(square) {
         let currentId = square.id
@@ -89,6 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         square.classList.add('checked')
     }
+
+
 
     //check neighboring square once square is clicked
     function checkSquare(square, currentId) {
@@ -139,12 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 10)
     }
 
-    //game over
+    //game over takes in the square, alert the user the game is over
     function gameOver(square) {
         alert('BOOM! GAME OVER!')
         isGameOver = true
 
-        //show all bomb location
+        //reveal all bomb location
         squares.forEach(square => {
             if (square.classList.contains('bomb')) {
                 square.innerHTML = '💣'
@@ -153,6 +192,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    //change the dificulty of the game
+    function difficulty(choice) {
+        let level = ["easy", "medium", "hard"]
+        if (choice == level[0]) {
+            this.width = 10
+            this.bombAmount = 20
 
+        } else if (choice == level[1]) {
+            this.width = 15
+            this.bombAmount = 30
+        } else {
+            this.width = 20
+            this.bombAmount = 45
+        }
+    }
 
 })

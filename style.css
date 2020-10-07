@@ -8,6 +8,16 @@
     flex-wrap: wrap;
     /*wrap over each otehr so they fit in the grid*/
     background-color: grey;
+    border-style: solid;
+    border-radius: 10%;
+    border-color: green;
+    border-width: 20px;
+    box-shadow: 10px 10px;
+
+}
+
+body {
+    background-color: bisque;
 }
 
 /*style all divs inside of the grid*/
@@ -18,4 +28,8 @@
 
 .bomb {
     background-color: orange;
+}
+
+.checked {
+    background-color: red;
 }
