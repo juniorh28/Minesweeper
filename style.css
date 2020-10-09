@@ -13,23 +13,27 @@
     border-color: green;
     border-width: 20px;
     box-shadow: 10px 10px;
-
 }
 
 body {
     background-color: bisque;
+    text-align: center;
 }
 
 /*style all divs inside of the grid*/
 .grid div {
     height: 40px;
     width: 40px;
+
 }
 
+/*
 .bomb {
     background-color: orange;
+    border-style: solid;
+    border-color: black;
 }
-
+*/
 .checked {
     background-color: red;
 }

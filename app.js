@@ -1,12 +1,13 @@
 //ensure all thml file is loaded before loading in javascript 
 document.addEventListener('DOMContentLoaded', () => {
-    const grid = document.querySelector('.grid') // . means class name
+    const grid = document.querySelector('.grid')
+
     let width = 10
     let bombAmount = 20
     let flags = 0;
     let squares = []
     let isGameOver = false
-    const choice = document.createElement('div')
+    const choice = document.querySelector('.difficulty')
     choice.addEventListener('difficulty', function (e) {
         difficulty(choice)
     })
@@ -40,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 e.preventDefault()
                 addFlag(square)
             }
-
-
-
 
         }
 
