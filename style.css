@@ -1,8 +1,8 @@
 /*styles the grid*/
 .grid {
-    height: 400px;
+    height: 440px;
     /*10x10 grid 40px height and width*/
-    width: 400px;
+    width: 440px;
     display: flex;
     /*the square display inline not stacked over each other*/
     flex-wrap: wrap;
@@ -15,6 +15,7 @@
     box-shadow: 10px 10px;
 }
 
+
 body {
     background-color: bisque;
     text-align: center;
@@ -24,16 +25,16 @@ body {
 .grid div {
     height: 40px;
     width: 40px;
-
-}
-
-/*
-.bomb {
-    background-color: orange;
-    border-style: solid;
+    border: 2px solid;
     border-color: black;
+    box-sizing: border-box;
+    border-radius: 10%;
+
 }
-*/
+
 .checked {
     background-color: red;
+    border: 2px solid;
+    border-color: black;
+    box-sizing: border-box;
 }

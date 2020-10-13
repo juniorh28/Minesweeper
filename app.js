@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let flags = 0;
     let squares = []
     let isGameOver = false
+    /*
     const choice = document.querySelector('.difficulty')
     choice.addEventListener('difficulty', function (e) {
         difficulty(choice)
     })
+    */
 
     //Create the broad
     function createBoard() {
@@ -195,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 matches++
             }
             if (matches == bombAmount) {
-                console.log("You Won!")
+                alert("You Won!")
                 isGameOver = true
             }
         }
